@@ -1,25 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import anime from 'animejs'
+import Intro from './components/Intro'
+import Question from './components/Question'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(){
+    super()
+    this.state={
+      showQuestion: false
+    }
+  }
+
+  animeOut(){
+    setTimeout(
+      () => anime({
+        targets: '.card',
+        translateX: '150%',
+        elasticity: function(el, i, l){
+          return 200 + i * 200
+        }
+      }),
+      200
+    )
+  }
+
+
+  handleStart = () => {
+    this.animeOut()
+    setTimeout(() => this.setState({showQuestion: true}), 1000);
+  }
+
+
+  renderIntro = () => {
+    // This will be the intro component 
+    return <Intro handleStart={this.handleStart} title= "Welcome to Personality Test"/>
+  }
+
+  renderQuestion = () => {
+    return <Question />
+  }
+
+  render() {
+    return (
+      <div>
+        {this.state.showQuestion ? this.renderQuestion() : this.renderIntro() }
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App

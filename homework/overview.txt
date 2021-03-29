@@ -1,0 +1,18 @@
+Styled-components
+animejs 
+---> elastcity 
+React
+--> setTimeOut
+-->utils
+
+
+-media queries 
+-
+
+
+
+
+*When referencing others code remember to view the index.html in the public folder. And the package.json file. 
+
+----------------------To Do 
+----> Use dev ed 3d tutorial to create a pokemon ball that will have an animation of opening up with flash. 
